@@ -6,4 +6,4 @@ node_modules/
 .sass-cache
 
 # generated sass
-lib/scss
+lib/css/will.css
