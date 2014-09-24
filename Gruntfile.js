@@ -50,6 +50,11 @@ module.exports = function(grunt) {
 					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
 					'css/theme/blood.css': 'css/theme/source/blood.scss'
 				}
+			},
+			lib: {
+				files: {
+					'lib/css/will.css': 'lib/scss/will.scss'
+				}
 			}
 		},
 
@@ -104,6 +109,10 @@ module.exports = function(grunt) {
 			theme: {
 				files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
 				tasks: 'themes'
+			},
+			sass: {
+				files: [ 'lib/scss/**/*.scss' ],
+				tasks: 'sass:lib'
 			}
 		}
 
@@ -129,7 +138,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
 
 	// Serve presentation locally
-	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
+	grunt.registerTask( 'serve', [ 'sass:lib', 'connect', 'watch' ] );
 
 	// Run tests
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
